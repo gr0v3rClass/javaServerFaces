@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        Hello from Facelets
+
+        <h:form>
+            <h:inputText value="#{indexBean.mensaje}" style="" class="" size="" maxlength="" required="" id="" styleClass=""/>
+            <h:inputText value="#{5+3}"/>
+            <h:inputText value="#{true?'si':'no'}"/>
+            <h:commandButton value="Enviar" action="#{indexBean.metodoMensaje}"/>
+            <h:outputText value="ID #{param.id}" />
+            <h:outputText value="ID #{sessionScope.usuario}" />
+        </h:form>
+
+        <h:inputText />
+        <h:outputText />
+        <h:commandButton />
+        <h:panelGroup>
+            <!-- contenido del panel -->
+        </h:panelGroup>
+
+        <h:dataTable>
+            <thead></thead>
+            <tbody></tbody>
+        </h:dataTable>
+
+        <f:metadata>
+            <f:viewParam name="id" value="#{param.id}" />
+        </f:metadata>
+
+        <h:commandButton value="Actualizar" action="#{miBean.actualizar}">
+            <f:ajax execute="@form" render="@form"/>
+        </h:commandButton>
+
+        <h:inputText id="nombre" value="#{miBean.nombre}">
+            <f:attribute name="placeholer" value="Escriba tu nombre"/>
+        </h:inputText>
+
+        <h:commandLink value="ver detalla">
+            <f:param name="id" value="#{miBean.id}" />
+        </h:commandLink>
+
+        <ul>
+            <ui:repeat value="#{miBean.listaDeUsuarios}" var="usuarios">
+                <li>#{miBean.nombre}</li>
+            </ui:repeat>
+        </ul>
+
+        <ui:composition template="paltilla.xhtml">
+            <ui:define name="titulo">Pagina 1</ui:define>
+            <ui:define name="contenido">
+                <h1>titulo del contenido</h1>
+                <!-- otros contenidos de la pagina de plantilla.xhtml -->
+            </ui:define>
+        </ui:composition>
+
+        <ui:fragment rendered="#{miBean.motrarBoton}">
+            <h:commandButton value="guardar" action="#{miBean.guardar}" />
+        </ui:fragment>
+
+        <ui:include src="paltilla2.xhtml">
+            <ui:param name="titulo" value="pagina de inicio" />
+        </ui:include>
+
+
+        <c:forEach items="${miBean.listaDeUsuarios}" var="usuario1">
+            <p>${usuario1.nombre}</p>
+        </c:forEach>
+
+        <c:if test="${1==1}">
+            <p>esto es por verdad</p>
+        </c:if>
+        <!--<p>longitud de un caracter => <c:out value="${fn:length(miBean.text)}"/> </p>-->
+
+
+        <c:set var="resultado" value="${miBean.calcularResultado()}" />
+        <!--<p>El resultado es: <c:out value="${resultado}" /> </p>-->
+
+        <c:choose>
+            <c:when test="${miBean.edad >= 18}">
+                <p>Es mayor de edad</p>
+            </c:when>
+            <c:otherwise>
+                <p>Es menor de edad</p>
+            </c:otherwise>
+        </c:choose>
+    </h:body>
+</html>

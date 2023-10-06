@@ -1,0 +1,5 @@
+com/mycompany/ejemplo_1_configuracion/ejb/myBean.class
+com/mycompany/servelets/FacesServlet.class
+com/mycompany/ejemplo_1_configuracion/ejb/myBeanLocal.class
+com/mycompany/ejemplo_1_configuracion/JakartaRestConfiguration.class
+com/mycompany/ejemplo_1_configuracion/resources/JakartaEE91Resource.class
