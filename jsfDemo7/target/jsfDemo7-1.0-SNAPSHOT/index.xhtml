@@ -12,7 +12,7 @@
             <p:inputText value="#{indexBean.name}"/>
             <p:commandButton value="add" actionListener="#{indexBean.add}" ajax="dt_names"/>
             
-            <p:dataTable id="dat_names" value="#{indexBean.list}" var="nom">
+            <p:dataTable id="dt_names" value="#{indexBean.list}" var="nom">
                 <p:column>
                     <h:outputText value="#{nom}"/>
                 </p:column>

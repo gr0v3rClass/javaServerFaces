@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="frmlog">
+            <p:panelGrid id="panGriLog" columns="2" style="width: 70%">
+                <p:inputText id="txtNomUsu" value="#{loginBean.nombreUsu}" placeholder="Usuario:" maxlength="10" rendered="true" requiredMessage="Usuario requerido" />
+                <p:message for="txtNomUsu" />
+                <p:inputText id="ptxtClaUsu" value="#{loginBean.claveUsu}" placeholder="clave:" maxlength="10" rendered="true" requiredMessage="Clave requerida" />
+                <p:message for="ptxtClaUsu" />
+            </p:panelGrid>
+            <p:panelGrid id="panGriBot" columns="1" style="width: 70%">
+                <p:commandButton value="Ingresar"  process="@this :frmlog:panGriLog" actionListener="#{loginBean.validarUsuario}" update=":frmlog:panGriLog"/>
+            </p:panelGrid>
+        </h:form>
+    </h:body>
+</html>
